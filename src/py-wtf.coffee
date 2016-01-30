@@ -1,5 +1,5 @@
 # Description
-#   A hubot script that finds wtf moments in your python code
+#   A hubot script that finds some wtf moments in your python code
 #
 # Configuration:
 #   LIST_OF_ENV_VARS_TO_SET

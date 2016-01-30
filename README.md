@@ -1,6 +1,6 @@
 # hubot-py-wtf
 
-A hubot script that finds wtf moments in your python code
+A hubot script that finds some wtf moments in your python code
 
 See [`src/py-wtf.coffee`](src/py-wtf.coffee) for full documentation.
 
