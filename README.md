@@ -2,7 +2,19 @@
 
 A hubot script that finds some wtf moments in your python code
 
-See [`src/py-wtf.coffee`](src/py-wtf.coffee) for full documentation.
+```
+user1>> hubot pywtf setdir /tmp/zcxv
+hubot>> No such directory!
+
+user1>> hubot pywtf setdir /Users/pcaulagi/code
+hubot>> ok!
+
+user1>> hubot pywtf random
+hubot>> /Users/pcaulagi/code/api.py: wq = reduce(lambda x, y: x & y, wq)
+
+user1>> hubot pywtf random
+hubot>> /Users/pcaulagi/code/utils.py: rd[j] = ((rd[j + 1] << 1) | 1) & charMatch
+```
 
 ## Installation
 
@@ -16,11 +28,4 @@ Then add **hubot-py-wtf** to your `external-scripts.json`:
 [
   "hubot-py-wtf"
 ]
-```
-
-## Sample Interaction
-
-```
-user1>> hubot hello
-hubot>> hello!
 ```
