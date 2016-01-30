@@ -1,19 +1,32 @@
+Helper = require('hubot-test-helper')
 chai = require 'chai'
-sinon = require 'sinon'
-chai.use require 'sinon-chai'
-
 expect = chai.expect
+helper = new Helper('../src/py-wtf.coffee')
 
 describe 'py-wtf', ->
+
   beforeEach ->
-    @robot =
-      respond: sinon.spy()
-      hear: sinon.spy()
+    @room = helper.createRoom()
 
-    require('../src/py-wtf')(@robot)
+  afterEach ->
+    @room.destroy()
 
-  it 'registers a respond listener', ->
-    expect(@robot.respond).to.have.been.calledWith(/hello/)
+  describe 'setting working dir', ->
 
-  it 'registers a hear listener', ->
-    expect(@robot.hear).to.have.been.calledWith(/orly/)
+    afterEach ->
+      @room.messages = []
+
+    it 'to valid path', ->
+      msg = 'hubot pywtf setdir /tmp'
+      @room.user.say('alice', msg).then =>
+        expect(@room.messages).to.eql [
+          [ 'alice', msg ],
+          [ 'hubot', '@alice ok!' ]
+        ]
+
+    it 'to invalid path', ->
+      msg = 'hubot pywtf setdir /tmppp'
+      @room.user.say('alice', msg).then =>
+        expect(@room.messages).to.eql [
+          [ 'alice', msg ],
+        ]

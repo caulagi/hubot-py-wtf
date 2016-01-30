@@ -24,11 +24,6 @@ module.exports = (robot) ->
   name = "py-wtf:"
   working_dir = process.env.HUBOT_PY_WTF_CODE_DIR
 
-  if working_dir?
-    robot.logger.info(name, working_dir)
-  else
-    robot.logger.warning(name, "You need to set the working dir before the script can show its magic")
-
   rules = [
     "find %s -type f -name '*.py' -exec grep -i 'fixme' -- {} +"
     "find %s -type f -name '*.py' -exec grep 'lambda' -- {} + | grep reduce"
@@ -57,7 +52,6 @@ module.exports = (robot) ->
 
   robot.respond /pywtf setdir( (.*))?/i, (res) ->
     path = res.match[2]
-    robot.logger.debug(name, path)
     fs.access path, fs.R_OK, (err) ->
       if err?
         return res.reply "No such directory!"
