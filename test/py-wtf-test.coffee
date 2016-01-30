@@ -29,4 +29,5 @@ describe 'py-wtf', ->
       @room.user.say('alice', msg).then =>
         expect(@room.messages).to.eql [
           [ 'alice', msg ],
+          [ 'hubot', '@alice No such directory!' ]
         ]
