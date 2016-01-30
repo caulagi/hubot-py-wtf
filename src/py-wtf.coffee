@@ -26,9 +26,9 @@ module.exports = (robot) ->
 
   rules = [
     "find %s -type f -name '*.py' -exec grep -i 'fixme' -- {} +"
+    "find %s -type f -name '*.py' -exec grep -i 'wtf' -- {} +"
     "find %s -type f -name '*.py' -exec grep 'lambda' -- {} + | grep reduce"
-    "find %s -type f -name '*.py' -exec grep 'lambda' -- {} + | grep filter"
-    "find %s -type f -name '*.py' -exec grep 'lambda' -- {} + | grep collect"
+    "find %s -type f -name '*.py' -exec grep 'lambda' -- {} + | grep zip"
     "find %s -type f -name '*.py' -exec grep 'partial' -- {} + | grep reduce"
     "find %s -type f -name '*.py' -exec grep 'partial' -- {} + | grep filter"
     "find %s -type f -name '*.py' -exec grep 'partial' -- {} + | grep collect"
@@ -67,8 +67,10 @@ module.exports = (robot) ->
 
 
   robot.respond /pywtf bomb( (\d+))?/i, (res) ->
+    if not working_dir?
+      return res.reply "You need to set the working directory!"
     count = res.match[2] || 5
-    res.reply "!"
+    random_wtf res for i in [0...count]
 
   robot.respond /pywtf setdir( (.*))?/i, (res) ->
     path = res.match[2]
