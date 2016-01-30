@@ -1,7 +1,7 @@
 {
   "name": "hubot-py-wtf",
   "description": "A hubot script that finds some wtf moments in your python code",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "Pradip Caulagi <caulagi@gmail.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts, python, wtf",
