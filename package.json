@@ -7,10 +7,10 @@
   "keywords": "hubot, hubot-scripts, python, wtf",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-py-wtf.git"
+    "url": "git://github.com/caulagi/hubot-py-wtf.git"
   },
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-py-wtf/issues"
+    "url": "https://github.com/caulagi/hubot-py-wtf/issues"
   },
   "dependencies": {},
   "peerDependencies": {
