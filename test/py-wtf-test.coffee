@@ -13,21 +13,6 @@ describe 'py-wtf', ->
 
   describe 'setting working dir', ->
 
-    afterEach ->
-      @room.messages = []
-
     it 'to valid path', ->
-      msg = 'hubot pywtf setdir /tmp'
-      @room.user.say('alice', msg).then =>
-        expect(@room.messages).to.eql [
-          [ 'alice', msg ],
-          [ 'hubot', '@alice ok!' ]
-        ]
-
-    it 'to invalid path', ->
-      msg = 'hubot pywtf setdir /tmppp'
-      @room.user.say('alice', msg).then =>
-        expect(@room.messages).to.eql [
-          [ 'alice', msg ],
-          [ 'hubot', '@alice No such directory!' ]
-        ]
+      @room.user.say('alice', 'hubot pywtf setdir /tmp').then =>
+        expect(@room.messages[1]).to.eql [ 'hubot', '@alice ok!' ]
