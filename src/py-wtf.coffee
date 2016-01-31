@@ -37,6 +37,7 @@ module.exports = (robot) ->
     "find %s -type f -name '*.py' -exec grep '>>' -- {} + | grep '&'"
     "find %s -type f -name '*.py' -exec grep '>>' -- {} + | grep '|'"
     "find %s -type f -name '*.py' -exec grep 're.compile' -- {} +"
+    "find %s -type f -name '*.py' -exec grep -w 'eval' -- {} +"
   ]
 
   remove_rule = (index) ->
@@ -48,7 +49,7 @@ module.exports = (robot) ->
     return rules[0...index].concat(rules[index+1..])
 
   random_wtf = (res) ->
-    if not rules?
+    if not rules.length
       return res.reply "Good job - the code looks clean"
 
     index = Math.floor(Math.random() * rules.length)
@@ -58,8 +59,12 @@ module.exports = (robot) ->
         rules = remove_rule index
         random_wtf res
       else
-        items = (item for item in stdout.split("\n") when item.length > 0)
-        res.reply res.random items
+        if stdout.length == 0
+          rules = remove_rule index
+          random_wtf res
+        else
+          items = (item for item in stdout.split("\n") when item.length > 0)
+          res.reply res.random items
 
   robot.respond /pywtf random/i, (res) ->
     if not working_dir?
