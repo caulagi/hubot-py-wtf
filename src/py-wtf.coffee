@@ -11,7 +11,7 @@
 #
 # Notes:
 #   This scripts works only in a standard unix environment and expects
-#   standard commands like find and egrep to be available
+#   standard commands like find and grep to be available
 #
 # Author:
 #   Pradip Caulagi <caulagi@gmail.com>
@@ -36,6 +36,7 @@ module.exports = (robot) ->
     "find %s -type f -name '*.py' -exec grep '<<' -- {} + | grep '|'"
     "find %s -type f -name '*.py' -exec grep '>>' -- {} + | grep '&'"
     "find %s -type f -name '*.py' -exec grep '>>' -- {} + | grep '|'"
+    "find %s -type f -name '*.py' -exec grep 're.compile' -- {} +"
   ]
 
   remove_rule = (index) ->
@@ -64,7 +65,6 @@ module.exports = (robot) ->
     if not working_dir?
       return res.reply "You need to set the working directory!"
     random_wtf res
-
 
   robot.respond /pywtf bomb( (\d+))?/i, (res) ->
     if not working_dir?
