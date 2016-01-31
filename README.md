@@ -1,5 +1,4 @@
 # hubot-py-wtf
-[![NPM Version][npm-image]][npm-url]
 ![travis status](https://travis-ci.org/caulagi/hubot-py-wtf.svg?branch=master)
 
 A hubot script that finds some wtf moments in your python code
