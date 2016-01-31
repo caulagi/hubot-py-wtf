@@ -1,4 +1,5 @@
 # hubot-py-wtf
+![travis status](https://travis-ci.org/caulagi/hubot-py-wtf.svg?branch=master)
 
 A hubot script that finds some wtf moments in your python code
 
